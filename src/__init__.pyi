@@ -1,0 +1,36 @@
+import torch
+import torch.nn as nn
+
+class CRF(nn.Module):
+    def __init__(self, tag_size, start_idx, end_idx, adjacency_matrix=None):
+        ...
+
+    def reset_parameters(self):
+        ...
+    
+    def _forward_alg(self, feats):
+        ...
+    
+    def _score_sentence(self, feats, tags):
+        ...
+
+    def neg_log_likelihood(self, feats, tags, lens):
+        ...
+    
+    def _viterbi_decode(self, feats):
+        ...
+
+    def forward(self, feats, lens):
+        ...
+
+def alg_forward(input: torch.Tensor, length: torch.Tensor, weights: torch.Tensor, start_idx: int, end_idx: int):
+    ...
+
+def alg_backward(score_grad: torch.Tensor, states: torch.Tensor, stop_states: torch.Tensor, length: torch.Tensor, stop_idx: int):
+    ...
+
+def score_forward(input: torch.Tensor, length: torch.Tensor, weights: torch.Tensor,tags: torch.Tensor, start_idx: int, end_idx: int):
+    ...
+
+def score_backward(score_grad: torch.Tensor, tags: torch.Tensor, tagsize:int, start_idx: int, end_idx: int, length: torch.Tensor):
+    ...
