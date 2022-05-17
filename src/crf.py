@@ -55,7 +55,7 @@ class CRF(nn.Module):
                 gold_score.append(self._score_sentence(feat[:l], tag[:l]))
             forward_score = torch.stack(forward_score)
             gold_score = torch.stack(gold_score)
-        return forward_score,gold_score,forward_score - gold_score
+        return forward_score - gold_score
     
     def _viterbi_decode(self, feats):
         backpointers = []
